@@ -14,27 +14,24 @@ You can import individual wallets from `'@rainbow-me/rainbowkit/wallets'` along 
 For example, you can choose to only show Rainbow along with generic fallback wallets.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   injectedWallet,
   rainbowWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
-import { configureChains, mainnet } from 'wagmi';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { publicProvider } from 'wagmi/providers/public';
+} from "@rainbow-me/rainbowkit/wallets";
+import { configureChains, mainnet } from "wagmi";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
 
 const { chains } = configureChains(
   [mainnet],
-  [
-    alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
-    publicProvider(),
-  ]
+  [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
 );
 
 const connectors = connectorsForWallets([
   {
-    groupName: 'Recommended',
+    groupName: "Recommended",
     wallets: [
       injectedWallet({ chains }),
       rainbowWallet({ projectId, chains }),
@@ -355,6 +352,17 @@ rainbowWallet(options: {
 });
 ```
 
+#### Ramper Wallet
+
+```tsx
+import { ramperWallet } from '@rainbow-me/rainbowkit/wallets';
+
+ramperWallet(options: {
+  projectId: string;
+  chains: Chain[];
+});
+```
+
 #### Safe (Gnosis Safe)
 
 ```tsx
@@ -468,16 +476,16 @@ Here are a few examples of displaying different wallets, in different order.
 Show MetaMask along with generic fallback wallets.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   injectedWallet,
   metaMaskWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from "@rainbow-me/rainbowkit/wallets";
 
 const connectors = connectorsForWallets([
   {
-    groupName: 'Recommended',
+    groupName: "Recommended",
     wallets: [
       injectedWallet({ chains }),
       metaMaskWallet({ projectId, chains }),
@@ -490,23 +498,23 @@ const connectors = connectorsForWallets([
 Show Rainbow, MetaMask and Coinbase along with generic fallback wallets.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   injectedWallet,
   rainbowWallet,
   metaMaskWallet,
   coinbaseWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from "@rainbow-me/rainbowkit/wallets";
 
 const connectors = connectorsForWallets([
   {
-    groupName: 'Suggested',
+    groupName: "Suggested",
     wallets: [
       injectedWallet({ chains }),
       rainbowWallet({ projectId, chains }),
       metaMaskWallet({ projectId, chains }),
-      coinbaseWallet({ chains, appName: 'My RainbowKit App' }),
+      coinbaseWallet({ chains, appName: "My RainbowKit App" }),
       walletConnectWallet({ projectId, chains }),
     ],
   },
@@ -522,18 +530,18 @@ You can use the `groupName` key to name different wallet groups. This is useful 
 Recommend Rainbow and MetaMask, but also offer Coinbase along with generic fallback wallets.
 
 ```tsx
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from "@rainbow-me/rainbowkit";
 import {
   injectedWallet,
   rainbowWallet,
   metaMaskWallet,
   coinbaseWallet,
   walletConnectWallet,
-} from '@rainbow-me/rainbowkit/wallets';
+} from "@rainbow-me/rainbowkit/wallets";
 
 const connectors = connectorsForWallets([
   {
-    groupName: 'Recommended',
+    groupName: "Recommended",
     wallets: [
       injectedWallet({ chains }),
       rainbowWallet({ projectId, chains }),
@@ -541,9 +549,9 @@ const connectors = connectorsForWallets([
     ],
   },
   {
-    groupName: 'Others',
+    groupName: "Others",
     wallets: [
-      coinbaseWallet({ chains, appName: 'My RainbowKit App' }),
+      coinbaseWallet({ chains, appName: "My RainbowKit App" }),
       walletConnectWallet({ projectId, chains }),
     ],
   },
